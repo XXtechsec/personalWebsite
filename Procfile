@@ -1,1 +1,1 @@
-worker: FLASK_APP=blog.py flask run
+web: gunicorn blog:app
