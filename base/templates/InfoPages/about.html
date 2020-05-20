@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block Content %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url({{ url_for('static', filename='img/about-bg.jpg') }})">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="page-heading">
+                        <h1>About Me</h1>
+                        <span class="subheading">I Think I'm Me Therefore I Am Me</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h3>Basics</h3>
+                <p>My name is Anthony Lazar, I am currently in high school, I live near the Toronto area (that one city
+                    that won basketball and where the guy who sings "hotline bling" came
+                    from). If you want to get in touch just leave me a message <a
+                            href="{{ url_for('contact') }}">here</a>. </p>
+                <h3>Education</h3>
+                <p>I am "lucky" enough to get an IB education from an accredited high school and am currently working
+                    towards completing that diploma and then (hopefully) heading off to a good university for engineer.</p>
+                <div style="padding-left: 20px">
+                    <h5>What Type Of Engineering?</h5>
+                    <p style="font-size: smaller">I've narrowed it down to two polar opposite types, software engineering and mechanical
+                        engineering</p>
+                </div>
+                <h3>Interests?</h3>
+                <p>Weird Tech Projects (like this), video games especially anything nintendo, helping out the
+                    environment, reading (currently making my way through
+                    <a target="_blank" href="https://en.wikipedia.org/wiki/Trust_Me,_I'm_Lying">Trust Me I'm Lying</a>
+                    ), rock music (though I am listening to retrowave music right now). I think
+                    that's more than enough, I can go all day. </p>
+                <h3>What Did You Do During Quarantine?</h3>
+                <p>Write this.</p>
+                <h3>Thanks For Reading!</h3>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+{% endblock %}
