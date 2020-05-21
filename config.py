@@ -3,7 +3,7 @@ import os
 
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
-    SQLALCHEMY_DATABASE_URI = "sqlite:////Users/tony/Documents/personalWebsite/website.db"
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = "False"
     PASSWORD = 'password'
     IMAGE_UPLOADS = "/Users/tony/Documents/personalWebsite/base/static/img/uploads"
