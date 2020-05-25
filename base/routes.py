@@ -6,6 +6,7 @@ from config import *
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from flask_mail import Mail, Message
+import os, json, boto3
 
 password_hash = generate_password_hash(Config.PASSWORD)
 
@@ -40,11 +41,13 @@ def post(post_id):
 
     return render_template('BlogPages/post.html', post=post)
 
+
 # blogSelect
 @app.route('/blog')
 def blog():
     posts = blogPost.query.order_by(blogPost.date_posted.desc()).all()
     return render_template('BlogPages/blogSelect.html', posts=posts)
+
 
 ###Logic for making and managing Blog:
 
@@ -81,7 +84,8 @@ def modifypost(post_id):
 # Enter to add Post
 @app.route('/add')
 def add():
-    return render_template('BlogAdminPages/postMaker.html', post=blogPost(title='', subtitle='', author='', content=''), modify=False)
+    return render_template('BlogAdminPages/postMaker.html', post=blogPost(title='', subtitle='', author='', content=''),
+                           modify=False)
 
 
 # Actually make Post
@@ -180,10 +184,38 @@ def upload():
 def send_file(filename):
     return send_from_directory(app.config["IMAGE_UPLOADS"], filename)
 
+
+@app.route('/sign_s3/')
+def sign_s3():
+    S3_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME')
+
+    file_name = request.args.get('file_name')
+    file_type = request.args.get('file_type')
+
+    s3 = boto3.client('s3')
+
+    presigned_post = s3.generate_presigned_post(
+        Bucket=S3_BUCKET_NAME,
+        Key=file_name,
+        Fields={"acl": "public-read", "Content-Type": file_type},
+        Conditions=[
+            {"acl": "public-read"},
+            {"Content-Type": file_type}
+        ],
+        ExpiresIn=3600
+    )
+
+    return json.dumps({
+        'data': presigned_post,
+        'url': 'https://%s.s3.amazonaws.com/%s' % (S3_BUCKET_NAME, file_name)
+    })
+
+
 @app.route('/mail/')
 def mail():
     mail = Mail(app)
-    msg = Message('Twilio SendGrid Test Email', sender="tony.lazar.mi@gmail.com", recipients=['tony.lazar.mi@gmail.com'])
+    msg = Message('Twilio SendGrid Test Email', sender="tony.lazar.mi@gmail.com",
+                  recipients=['tony.lazar.mi@gmail.com'])
     msg.body = 'This is a test email!'
     msg.html = '<p>This is a test email!</p>'
     mail.send(msg)
