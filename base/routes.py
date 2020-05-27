@@ -208,9 +208,9 @@ s3 = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_k
 @app.route('/files/')
 def sign_s3():
     s3_resources = boto3.resource('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
-    bucket = s3_resources(AWS_STORAGE_BUCKET_NAME)
-    summery = bucket.objects.all()
+    bucket = s3_resources.Bucket(AWS_STORAGE_BUCKET_NAME)
+    summaries = bucket.objects.all()
 
-    return summery
+    return summaries
 
 
