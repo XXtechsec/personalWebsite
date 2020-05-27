@@ -152,34 +152,6 @@ def allowed_image(filename):
         return False
 
 
-# choose to upload
-@app.route("/upload", methods=["GET", "POST"])
-def upload():
-    if request.method == "POST":
-
-        if request.files:
-
-            image = request.files["image"]
-
-            if image.filename == "":
-                flash('No Filename', category="danger")
-                return render_template('webLogicPages/userInfo.html')
-
-            if allowed_image(image.filename):
-                filename = secure_filename(image.filename)
-                filename.replace(" ", "")
-
-                image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
-
-                flash('File Uploaded!', category="success")
-
-                return render_template('webLogicPages/userInfo.html')
-
-            else:
-                flash('File Extension Not Allowed', category="danger")
-                return render_template('webLogicPages/userInfo.html')
-
-    return render_template("upload.html")
 
 
 # Retrieve from uploads, very useful
@@ -213,4 +185,31 @@ def sign_s3():
 
     return render_template('BlogAdminPages/files.html', my_bucket=bucket, files=summaries)
 
+# choose to upload
+@app.route("/upload", methods=["POST"])
+def upload():
+    if request.method == "POST":
 
+        if request.files:
+
+            image = request.files["image"]
+
+            if image.filename == "":
+                flash('No Filename', category="danger")
+                return render_template('webLogicPages/userInfo.html')
+
+            if allowed_image(image.filename):
+                s3_resources = boto3.resource('s3', aws_access_key_id=AWS_ACCESS_KEY_ID,
+                                              aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+                bucket = s3_resources.Bucket(AWS_STORAGE_BUCKET_NAME)
+
+                bucket.Object(image.filename).put(Body=image)
+                flash('object uploaded', category="success")
+                return render_template('webLogicPages/userInfo.html')
+
+            else:
+                flash('File Extension Not Allowed', category="danger")
+                return render_template('webLogicPages/userInfo.html')
+
+    flash('You messed up bad', category="danger")
+    return redirect(url_for('index'))
