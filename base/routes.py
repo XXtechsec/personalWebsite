@@ -10,6 +10,9 @@ import os, json, boto3
 
 password_hash = generate_password_hash(Config.PASSWORD)
 
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 ### Logic for Info Pages:
 
@@ -185,30 +188,6 @@ def send_file(filename):
     return send_from_directory(app.config["IMAGE_UPLOADS"], filename)
 
 
-@app.route('/sign_s3/')
-def sign_s3():
-  AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-
-  file_name = request.args.get('file_name')
-  file_type = request.args.get('file_type')
-
-  s3 = boto3.client('s3')
-
-  presigned_post = s3.generate_presigned_post(
-    Bucket = AWS_STORAGE_BUCKET_NAME,
-    Key = file_name,
-    Fields = {"acl": "public-read", "Content-Type": file_type},
-    Conditions = [
-      {"acl": "public-read"},
-      {"Content-Type": file_type}
-    ],
-    ExpiresIn = 3600
-  )
-
-  return json.dumps({
-    'data': presigned_post,
-    'url': 'https://%s.s3.amazonaws.com/%s' % (AWS_STORAGE_BUCKET_NAME, file_name)
-  })
 
 
 @app.route('/mail/')
@@ -220,3 +199,18 @@ def mail():
     msg.html = '<p>This is a test email!</p>'
     mail.send(msg)
     return "email sent"
+
+
+
+###s3 stuff
+
+s3 = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+@app.route('/files/')
+def sign_s3():
+    s3_resources = boto3.resource('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+    bucket = s3_resources(AWS_STORAGE_BUCKET_NAME)
+    summery = bucket.objects.all()
+
+    return summery
+
+
