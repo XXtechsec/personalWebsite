@@ -211,6 +211,6 @@ def sign_s3():
     bucket = s3_resources.Bucket(AWS_STORAGE_BUCKET_NAME)
     summaries = bucket.objects.all()
 
-    return summaries
+    return render_template('files.html', my_bucket=bucket, files=summaries)
 
 
