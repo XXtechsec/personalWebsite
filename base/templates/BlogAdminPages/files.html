@@ -5,7 +5,7 @@
   <div class="container">
     <div class="col-12-xs">
       <h3>Bucket Info</h3>
-      <p>Created: {{ my_bucket.creation_date | datetimeformat }}</p>
+      <p>Created: {{ my_bucket.creation_date}}</p>
 
       <table class="table table-striped">
         <tr>
@@ -17,8 +17,8 @@
         {% for f in files %}
         <tr>
           <td>{{ f.key }}</td>
-          <td>{{ f.last_modified | datetimeformat }}</td>
-          <td>{{ f.key | file_type }}</td>
+          <td>{{ f.last_modified}}</td>
+          <td>{{ f.key}}</td>
         </tr>
         {% endfor %}
       </table>
