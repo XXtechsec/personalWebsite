@@ -187,28 +187,28 @@ def send_file(filename):
 
 @app.route('/sign_s3/')
 def sign_s3():
-    S3_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME')
+  AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
-    file_name = request.args.get('file_name')
-    file_type = request.args.get('file_type')
+  file_name = request.args.get('file_name')
+  file_type = request.args.get('file_type')
 
-    s3 = boto3.client('s3')
+  s3 = boto3.client('s3')
 
-    presigned_post = s3.generate_presigned_post(
-        Bucket=S3_BUCKET_NAME,
-        Key=file_name,
-        Fields={"acl": "public-read", "Content-Type": file_type},
-        Conditions=[
-            {"acl": "public-read"},
-            {"Content-Type": file_type}
-        ],
-        ExpiresIn=3600
-    )
+  presigned_post = s3.generate_presigned_post(
+    Bucket = AWS_STORAGE_BUCKET_NAME,
+    Key = file_name,
+    Fields = {"acl": "public-read", "Content-Type": file_type},
+    Conditions = [
+      {"acl": "public-read"},
+      {"Content-Type": file_type}
+    ],
+    ExpiresIn = 3600
+  )
 
-    return json.dumps({
-        'data': presigned_post,
-        'url': 'https://%s.s3.amazonaws.com/%s' % (S3_BUCKET_NAME, file_name)
-    })
+  return json.dumps({
+    'data': presigned_post,
+    'url': 'https://%s.s3.amazonaws.com/%s' % (AWS_STORAGE_BUCKET_NAME, file_name)
+  })
 
 
 @app.route('/mail/')
