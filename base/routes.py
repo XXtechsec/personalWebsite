@@ -1,5 +1,5 @@
 from base import app
-from flask import render_template, flash, redirect, request, url_for, session, send_from_directory
+from flask import render_template, flash, redirect, request, url_for, session, send_from_directory, Response
 from models import blogPost, db
 from datetime import datetime
 from config import *
@@ -154,10 +154,7 @@ def allowed_image(filename):
 
 
 
-# Retrieve from uploads, very useful
-@app.route('/uploads/<filename>')
-def send_file(filename):
-    return send_from_directory(app.config["IMAGE_UPLOADS"], filename)
+
 
 
 
@@ -213,3 +210,13 @@ def upload():
 
     flash('You messed up bad', category="danger")
     return redirect(url_for('index'))
+
+
+# Retrieve from uploads, very useful
+@app.route('/uploads/<filename>')
+def send_file(filename):
+    s3_resources = boto3.resource('s3', aws_access_key_id=AWS_ACCESS_KEY_ID,
+                                  aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+    bucket = s3_resources.Bucket(AWS_STORAGE_BUCKET_NAME)
+    file_obj = bucket.Object(filename).get()
+    return file_obj['Body'].read()
