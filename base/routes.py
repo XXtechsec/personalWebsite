@@ -13,7 +13,7 @@ password_hash = generate_password_hash(Config.PASSWORD)
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-
+aws_session_token = os.environ.get('aws_session_token')
 ### Logic for Info Pages:
 
 # home
@@ -173,10 +173,10 @@ def mail():
 
 ###s3 stuff
 
-s3 = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+s3 = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY, aws_session_token=aws_session_token)
 @app.route('/files/')
 def sign_s3():
-    s3_resources = boto3.resource('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+    s3_resources = boto3.resource('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY, aws_session_token=aws_session_token)
     bucket = s3_resources.Bucket(AWS_STORAGE_BUCKET_NAME)
     summaries = bucket.objects.all()
 
@@ -197,11 +197,11 @@ def upload():
 
             if allowed_image(image.filename):
                 s3_resources = boto3.resource('s3', aws_access_key_id=AWS_ACCESS_KEY_ID,
-                                              aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+                                              aws_secret_access_key=AWS_SECRET_ACCESS_KEY, aws_session_token=aws_session_token)
                 bucket = s3_resources.Bucket(AWS_STORAGE_BUCKET_NAME)
 
                 bucket.Object(image.filename).put(Body=image)
-                flash('object uploaded', category="success")
+                flash('File Uploaded', category="success")
                 return render_template('webLogicPages/userInfo.html')
 
             else:
@@ -216,7 +216,7 @@ def upload():
 @app.route('/uploads/<filename>')
 def send_file(filename):
     s3_resources = boto3.resource('s3', aws_access_key_id=AWS_ACCESS_KEY_ID,
-                                  aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+                                  aws_secret_access_key=AWS_SECRET_ACCESS_KEY, aws_session_token=aws_session_token)
     bucket = s3_resources.Bucket(AWS_STORAGE_BUCKET_NAME)
     file_obj = bucket.Object(filename).get()
     return file_obj['Body'].read()
