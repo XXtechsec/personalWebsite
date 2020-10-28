@@ -1,0 +1,8 @@
+{% extends "PortfolioPages/galleryBase.html" %}
+{% block maintitle %}Personal Website{% endblock %}
+
+{% block img %}<img class="card-img-top"
+                    src="{{ url_for('static', filename='/img/personalSite.png') }}"
+                    alt="Card image cap">{% endblock %}
+
+{% block retro %}I created this site as a hobby project during quarantine. Creating and publishing this site took over 5 months and was a lot tougher than I was expecting. Perhaps one of the reasons for this huge time requirement was that budgeting time to work on a hobby project was just difficult, especially once school rolled around. As for what the site was created with, it uses flask with a bootstrap HTML and CSS front end. The resulting work is hosted on a simple Heroku container (a hosting platform) and connected to a Postgres database. Perhaps one of the hardest parts was creating and configuring a database to handle blog posts. I knew I wanted to be able to write blog posts but I wasn’t expecting it to be so difficult to set it up. I had to worry about how to write blog posts without having to edit the database by hand, how to make sure only I can create blog posts, and how to display images. Overall, while the task was difficult I don’t regret doing it one bit, I have learned so much from this one experience and I am already looking to apply the experiences gained from this to more “practical” applications.{% endblock %}

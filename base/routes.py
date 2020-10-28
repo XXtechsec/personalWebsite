@@ -22,6 +22,34 @@ aws_session_token = os.environ.get('aws_session_token')
 def index():
     return render_template('InfoPages/index.html')
 
+@app.route('/portfolio')
+def portfolio():
+    return render_template('InfoPages/portfolio.html')
+
+@app.route('/portfolio/CSI')
+def CSI():
+    return render_template('PortfolioPages/CSI.html')
+
+@app.route('/portfolio/goDaddy')
+def goDaddy():
+    return render_template('PortfolioPages/goDaddy.html')
+
+@app.route('/portfolio/personal')
+def personal():
+    return render_template('PortfolioPages/personal.html')
+
+@app.route('/portfolio/quote')
+def quty():
+    return render_template('PortfolioPages/quty.html')
+
+@app.route('/portfolio/JA')
+def JA():
+    return render_template('PortfolioPages/JA.html')
+
+@app.route('/portfolio/Jam')
+def jam():
+    return render_template('PortfolioPages/jam.html')
+
 
 # about
 @app.route('/about')

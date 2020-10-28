@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block Content %}
+    <!-- Page Header -->
+    <header class="masthead">
+        <div class="container">
+            <div class="page-heading" style="padding: 28px">
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="post-heading portfolio-text">
+            <h1 class="text-center">Portfolio Gallery</h1>
+        </div>
+
+        <button class="btn btn-outline-primary text-left btn-portfolio gallerycard" type="button" data-toggle="collapse"
+                data-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">
+            Web Development
+        </button>
+        <div class="card container">
+            <div class="row collapse show gallerycard" id="collapseExample" data-toggle="collapse"
+                 data-target="#collapseExample"
+                 aria-expanded="false" aria-controls="collapseExample">
+{#                <div class="col-sm-4">#}
+{#                    <a href="{{ url_for('CSI') }}">#}
+{#                        <div class="card cardP">#}
+{#                            <img class="card-img-top"#}
+{#                                 src="{{ url_for('static', filename='/img/taku.png') }}"#}
+{#                                 alt="Card image cap">#}
+{#                            <div class="card-body">#}
+{#                                <h5 class="card-title">Citizen Science Inc. Prototyping and MVP</h5>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </a>#}
+{#                </div>#}
+                <div class="col-sm-4">
+                    <a href="{{ url_for('personal') }}">
+                        <div class="card cardP">
+                            <img class="card-img-top"
+                                 src="{{ url_for('static', filename='/img/personalSite.png') }}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Personal Website</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="{{ url_for('goDaddy') }}">
+                        <div class="card cardP">
+                            <img class="card-img-top"
+                                 src="{{ url_for('static', filename='/img/consult.png') }}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">HostPapa Tech Consultant Job</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="{{ url_for('quty') }}">
+                        <div class="card cardP">
+                            <img class="card-img-top"
+                                 src="{{ url_for('static', filename='/img/quty.png') }}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Django Tech Consultant Job</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="{{ url_for('JA') }}">
+                        <div class="card cardP">
+                            <img class="card-img-top"
+                                 src="{{ url_for('static', filename='/img/JA.png') }}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Start-Up Student Company Website Creation</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <button class="btn btn-outline-primary text-left btn-portfolio" type="button" data-toggle="collapse"
+                data-target="#game"
+                aria-expanded="false" aria-controls="collapseExample">
+            Game Development
+        </button>
+        <div class="card container">
+            <div class="row collapse show gallerycard" id="game" data-toggle="collapse"
+                 data-target="#game"
+                 aria-expanded="false" aria-controls="collapseExample">
+                <div class="col-sm-4">
+                    <a href="{{ url_for('jam') }}">
+                        <div class="card cardP">
+                            <img class="card-img-top"
+                                 src="{{ url_for('static', filename='/img/jam.png') }}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Game Jam Games</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+
+
+{% endblock %}

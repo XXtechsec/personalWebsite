@@ -17,40 +17,45 @@
         </div>
     </header>
     <div class="container">
-    <div class="row">
-        <div class="col-lg-12 col-md-12 mx-auto">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        {% if category == 'message' %}
-                            <div class="alert alert-warning" role="alert">
-                        {% else %}
-                            <div class="alert alert-{{ category }}" role="alert">
-                        {% endif %}
-                    {{ message }}
-                    </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+        <div class="row">
+            <div class="col-lg-12 col-md-12 mx-auto">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            {% if category == 'message' %}
+                                <div class="alert alert-warning" role="alert">
+                            {% else %}
+                                <div class="alert alert-{{ category }}" role="alert">
+                            {% endif %}
+                        {{ message }}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <h3>What Can You Find Here?</h3>
-                <p>Well here you'll find all sorts of useless webpages taking up the endless expanse that is the
-                    internet. Oh, and my blog, an about me and whatever else I think of down the line.</p>
-                <h3>Who Are You?</h3>
-                <p>Just a bored high school student. I enjoy all things internet, video games and a good book. I also
-                    like computer science and programming because it lets you do cool things like write little words
-                    that are transmitted across the world into your device.</p>
-                <h3>Why?</h3>
-                <p>Many Reasons! I think the internet is such a cool thing and all cool people on the internet have a
-                    website so I wanted one to. As well I want a little host for all my various projects collected in a
-                    nice place. So its easily accessible to people I want to share these projects with and also so I
-                    don't forget what I did (Cause if not I will).</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <h3>What Can You Find Here?</h3>
+                    <p>Well here you'll find all sorts of useless webpages taking up the endless expanse that is the
+                        internet. Oh, and my blog, an about me and whatever else I think of down the line.</p>
+                    <h3>Who Are You?</h3>
+                    <p>Just a bored high school student. I enjoy all things internet, video games and a good book. I
+                        also
+                        like computer science and programming because it lets you do cool things like write little words
+                        that are transmitted across the world into your device.</p>
+                    <h3>Why?</h3>
+                    <p>Many Reasons! I think the internet is such a cool thing and all cool people on the internet have
+                        a
+                        website so I wanted one to. As well, I want a little host for all my various projects collected
+                        in a
+                        nice place. That way its easily accessible to people I want to share these projects with and
+                        also so I
+                        don't forget what I did.</p>
+                </div>
             </div>
         </div>
     </div>

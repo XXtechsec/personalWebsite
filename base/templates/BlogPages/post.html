@@ -67,39 +67,6 @@ img {
         </div>
     </article>
 
-    <hr>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 mx-auto">
-                <ul class="list-inline text-lg-right text-md-center text-sm-center">
-                    <li class="list-inline-item">
-                        <form action="{{ url_for('delete', post_id=post.id) }}">
-                            <div class="form-group">
-                                <button type="submit"
-                                        class="btn btn-secondary btn-danger" id="sendMessageButton">
-                                    Delete
-                                </button>
-                            </div>
-                        </form>
-                    </li>
-                    <li class="list-inline-item">
-                        <form action="{{ url_for('modify', post_id=post.id) }}">
-                            <div class="form-group">
-                                <button type="submit"
-                                        class="btn btn-secondary btn-info btn-outline-light"
-                                        id="sendMessageButton">
-                                    Modify
-                                </button>
-                            </div>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-
-
-        </div>
-
-    </div>
 </div>
 <hr>
 {% endblock %}

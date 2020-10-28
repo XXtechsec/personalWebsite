@@ -1,0 +1,29 @@
+
+.btn-portfolio {
+    width: 100%;
+}
+.btn-portfolio:focus, .btn-primary:active {
+  outline: none;
+  box-shadow: none;
+}
+
+
+.gallerycard {
+    padding: 20px;
+    padding-top: 30px;
+}
+
+.portfolio-text{
+    font-size: 40px;
+    padding-bottom: 40px;
+}
+
+.cardP{
+    height: 300px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.cardP img{
+    height: 200px;
+}
