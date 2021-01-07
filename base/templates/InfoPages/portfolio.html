@@ -25,18 +25,18 @@
             <div class="row collapse show gallerycard" id="collapseExample" data-toggle="collapse"
                  data-target="#collapseExample"
                  aria-expanded="false" aria-controls="collapseExample">
-{#                <div class="col-sm-4">#}
-{#                    <a href="{{ url_for('CSI') }}">#}
-{#                        <div class="card cardP">#}
-{#                            <img class="card-img-top"#}
-{#                                 src="{{ url_for('static', filename='/img/taku.png') }}"#}
-{#                                 alt="Card image cap">#}
-{#                            <div class="card-body">#}
-{#                                <h5 class="card-title">Citizen Science Inc. Prototyping and MVP</h5>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </a>#}
-{#                </div>#}
+                {#                <div class="col-sm-4">#}
+                {#                    <a href="{{ url_for('CSI') }}">#}
+                {#                        <div class="card cardP">#}
+                {#                            <img class="card-img-top"#}
+                {#                                 src="{{ url_for('static', filename='/img/taku.png') }}"#}
+                {#                                 alt="Card image cap">#}
+                {#                            <div class="card-body">#}
+                {#                                <h5 class="card-title">Citizen Science Inc. Prototyping and MVP</h5>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                    </a>#}
+                {#                </div>#}
                 <div class="col-sm-4">
                     <a href="{{ url_for('personal') }}">
                         <div class="card cardP">
@@ -106,6 +106,67 @@
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">Game Jam Games</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <button class="btn btn-outline-primary text-left btn-portfolio" type="button" data-toggle="collapse"
+                data-target="#circuit"
+                aria-expanded="false" aria-controls="collapseExample">
+            Circuit Projects
+        </button>
+        <div class="card container">
+            <div class="row collapse show gallerycard" id="game" data-toggle="collapse"
+                 data-target="#circuit"
+                 aria-expanded="false" aria-controls="collapseExample">
+                <div class="col-sm-4">
+                    <a href="{{ url_for('christmasTree') }}">
+                        <div class="card cardP">
+                            <img class="card-img-top"
+                                 src="{{ url_for('static', filename='/img/tree.png') }}"
+                                 alt="Card image cap"  style="width: 150px; margin-left: 75px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Christmas Tree Circuit Project</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="{{ url_for('lockBreaker') }}">
+                        <div class="card cardP">
+                            <img class="card-img-top"
+                                 src="{{ url_for('static', filename='/img/lock.png') }}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Machine that Unlocks Locks</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-outline-primary text-left btn-portfolio" type="button" data-toggle="collapse"
+                data-target="#personal"
+                aria-expanded="false" aria-controls="collapseExample">
+            Personal Projects
+        </button>
+        <div class="card container">
+            <div class="row collapse show gallerycard" id="game" data-toggle="collapse"
+                 data-target="#personal"
+                 aria-expanded="false" aria-controls="collapseExample">
+                <div class="col-sm-4">
+                    <a href="{{ url_for('zoomers') }}">
+                        <div class="card cardP">
+                            <img class="card-img-top"
+                                 src="{{ url_for('static', filename='/img/zoomers.png') }}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Zoomers Podcast</h5>
                             </div>
                         </div>
                     </a>

@@ -50,6 +50,18 @@ def JA():
 def jam():
     return render_template('PortfolioPages/jam.html')
 
+@app.route('/portfolio/christmasTree')
+def christmasTree():
+    return render_template('PortfolioPages/christmasTree.html')
+
+@app.route('/portfolio/lockBreaker')
+def lockBreaker():
+    return render_template('PortfolioPages/lockBreaker.html')
+
+@app.route('/portfolio/zoomers')
+def zoomers():
+    return render_template('PortfolioPages/zoomers.html')
+
 
 # about
 @app.route('/about')
