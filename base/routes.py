@@ -62,6 +62,10 @@ def lockBreaker():
 def zoomers():
     return render_template('PortfolioPages/zoomers.html')
 
+@app.route('/portfolio/restack')
+def restack():
+    return render_template('PortfolioPages/restack.html')
+
 
 # about
 @app.route('/about')

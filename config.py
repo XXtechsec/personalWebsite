@@ -4,7 +4,7 @@ class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = "False"
-    PASSWORD = os.environ.get('BLOG_PASSWORD')
+    PASSWORD = os.environ.get('BLOG_PASSWORD') or 'hi'
     IMAGE_UPLOADS = "/Users/tony/Documents/personalWebsite/base/static/img/uploads"
     ALLOWED_IMAGE_EXTENSIONS = ["JPEG", "JPG", "PNG", "GIF"]
     MAIL_SERVER = 'smtp.sendgrid.net'

@@ -25,18 +25,18 @@
             <div class="row collapse show gallerycard" id="collapseExample" data-toggle="collapse"
                  data-target="#collapseExample"
                  aria-expanded="false" aria-controls="collapseExample">
-                {#                <div class="col-sm-4">#}
-                {#                    <a href="{{ url_for('CSI') }}">#}
-                {#                        <div class="card cardP">#}
-                {#                            <img class="card-img-top"#}
-                {#                                 src="{{ url_for('static', filename='/img/taku.png') }}"#}
-                {#                                 alt="Card image cap">#}
-                {#                            <div class="card-body">#}
-                {#                                <h5 class="card-title">Citizen Science Inc. Prototyping and MVP</h5>#}
-                {#                            </div>#}
-                {#                        </div>#}
-                {#                    </a>#}
-                {#                </div>#}
+                                <div class="col-sm-4">
+                                    <a href="{{ url_for('CSI') }}">
+                                        <div class="card cardP">
+                                            <img class="card-img-top"
+                                                 src="{{ url_for('static', filename='/img/csi.png') }}"
+                                                 alt="Card image cap">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Citizen Science Project MVP</h5>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
                 <div class="col-sm-4">
                     <a href="{{ url_for('personal') }}">
                         <div class="card cardP">
@@ -80,7 +80,7 @@
                                  src="{{ url_for('static', filename='/img/JA.png') }}"
                                  alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">Start-Up Student Company Website Creation</h5>
+                                <h5 class="card-title">Deja Bru Start-Up Company Website Creation</h5>
                             </div>
                         </div>
                     </a>
@@ -120,7 +120,7 @@
             Circuit Projects
         </button>
         <div class="card container">
-            <div class="row collapse show gallerycard" id="game" data-toggle="collapse"
+            <div class="row collapse show gallerycard" id="circuit" data-toggle="collapse"
                  data-target="#circuit"
                  aria-expanded="false" aria-controls="collapseExample">
                 <div class="col-sm-4">
@@ -153,10 +153,10 @@
         <button class="btn btn-outline-primary text-left btn-portfolio" type="button" data-toggle="collapse"
                 data-target="#personal"
                 aria-expanded="false" aria-controls="collapseExample">
-            Personal Projects
+            Other Cool Projects
         </button>
         <div class="card container">
-            <div class="row collapse show gallerycard" id="game" data-toggle="collapse"
+            <div class="row collapse show gallerycard" id="personal" data-toggle="collapse"
                  data-target="#personal"
                  aria-expanded="false" aria-controls="collapseExample">
                 <div class="col-sm-4">
@@ -167,6 +167,18 @@
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">Zoomers Podcast</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="{{ url_for('restack') }}">
+                        <div class="card cardP">
+                            <img class="card-img-top"
+                                 src="{{ url_for('static', filename='/img/overboard.JPG') }}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Overboard Card Game by Restacks</h5>
                             </div>
                         </div>
                     </a>

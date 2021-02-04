@@ -11,7 +11,7 @@
     </header>
 
     <!-- Main Content -->
-    <div class="container">
+    <div class="container align-center">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <h1>{% block maintitle %} {% endblock %}</h1>
@@ -29,13 +29,15 @@
                     {% block retro %}
                     {% endblock %}
                 </p>
-                        <hr>
-            <div class="align-center ">
-                <a class="align-center" href="{{ url_for('portfolio') }}">
-                    <button class="btn btn-primary">Back to Gallery</button>
-                </a>
-</div>
+                <hr>
+                <div class=" center">
+                    <a class="align-center" style="margin-left: 270px;" href="{{ url_for('portfolio') }}">
+                        <button class="btn btn-primary align-center">Back to Gallery</button>
+                    </a>
+                </div>
+                <hr>
             </div>
+
 
         </div>
     </div>
